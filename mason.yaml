@@ -10,3 +10,5 @@ bricks:
   #     path: bricks/widget
   cubit:
     path: ./cubit/
+  project_skeleton:
+    path: ./project_skeleton/

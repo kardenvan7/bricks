@@ -12,6 +12,9 @@
       <excludeFolder url="file://$MODULE_DIR$/cubit/hooks/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/cubit/hooks/build" />
       <excludeFolder url="file://$MODULE_DIR$/cubit/hooks/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/project_skeleton/hooks/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/project_skeleton/hooks/build" />
+      <excludeFolder url="file://$MODULE_DIR$/project_skeleton/hooks/.pub" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
