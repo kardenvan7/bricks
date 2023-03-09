@@ -7,14 +7,17 @@ void run(HookContext context) async {
 
   context.logger.info('Fetching dependencies');
 
-  await Process.run('flutter', ['pub get']);
+  await Process.run('flutter', ['pub', 'get']);
 
   context.logger.info('Running build runner');
 
   await Process.run(
     'flutter',
     [
-      'pub run build_runner build',
+      'pub',
+      'run',
+      'build_runner',
+      'build',
       '--delete-conflicting-outputs',
     ],
   );
@@ -23,16 +26,16 @@ void run(HookContext context) async {
 
   await Process.run(
     'dart',
-    ['pub global activate flutter_gen'],
+    ['pub', 'global', 'activate', 'flutter_gen'],
   );
 
   context.logger.info('Running fluttergen');
 
   await Process.run('fluttergen', []);
 
-  context.logger.info('Running dart fix');
-
-  await Process.run('dart', ['fix', '--apply']);
+  // context.logger.info('Running dart fix');
+  //
+  // await Process.run('dart', ['fix', '--apply']);
 
   progress.complete('Post generation finished successfully');
 }
