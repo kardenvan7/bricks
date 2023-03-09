@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'dart:typed_data';
 
-import 'package:{{name}}/core/core.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:{{name}}/core/core.dart'r;
 
 part 'hive_box_facade.dart';
 
@@ -23,8 +24,24 @@ class HiveFacadeImpl implements HiveFacade {
   }
 
   @override
-  Future<HiveBoxFacade<T>> openBox<T>(HiveBoxesKeys key) async {
-    return HiveBoxFacadeImpl(await Hive.openBox<T>(key.name));
+  Future<HiveBoxFacade<T>> openBox<T>(
+      HiveBoxesKeys key, {
+        HiveCipher? encryptionCipher,
+        bool crashRecovery = true,
+        String? path,
+        Uint8List? bytes,
+        String? collection,
+      }) async {
+    return HiveBoxFacadeImpl(
+      await Hive.openBox<T>(
+        key.name,
+        encryptionCipher: encryptionCipher,
+        crashRecovery: crashRecovery,
+        path: path,
+        bytes: bytes,
+        collection: collection,
+      ),
+    );
   }
 
   @override
