@@ -4,14 +4,16 @@ import 'package:mason/mason.dart';
 
 void run(HookContext context) async {
   Progress progress = context.logger.progress(
-    'Post generation initiated',
+    'Fetching dependencies',
   );
-
-  progress.update('Fetching dependencies');
 
   await Process.run('flutter', ['pub', 'get']);
 
-  progress.update('Running build runner');
+  progress.complete('Dependencies fetched successfully');
+
+  progress = context.logger.progress(
+    'Running build_runner',
+  );
 
   await Process.run(
     'flutter',
@@ -24,14 +26,18 @@ void run(HookContext context) async {
     ],
   );
 
-  progress.update('Adding fluttergen globally');
+  progress.complete('Build_runner finished successfully');
+
+  progress = context.logger.progress('Adding fluttergen globally');
 
   await Process.run(
     'dart',
     ['pub', 'global', 'activate', 'flutter_gen'],
   );
 
-  progress.update('Running fluttergen');
+  progress.complete('Fluttergen added successfully');
+
+  progress = context.logger.progress('Running fluttergen');
 
   await Process.run('fluttergen', []);
 
@@ -39,5 +45,5 @@ void run(HookContext context) async {
   //
   // await Process.run('dart', ['fix', '--apply']);
 
-  progress.complete('Post generation finished successfully');
+  progress.complete('Fluttergen finished successfully');
 }
