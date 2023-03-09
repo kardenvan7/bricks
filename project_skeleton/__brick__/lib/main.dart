@@ -12,9 +12,7 @@ class AppInitializer {
 
     await initDependencyInjection();
 
-    runApp(const {
-      {name.pascalCase()}
-    }());
+    // runApp(const {{name.pascalCase()}}());
   }
 
   /// Initializes dependency injection classes for all scopes.
