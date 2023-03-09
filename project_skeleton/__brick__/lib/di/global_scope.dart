@@ -1,4 +1,5 @@
 import 'package:{{name}}/config/configuration_variables.dart';
+import 'package:{{name}}/config/env.dart';
 import 'package:{{name}}/core/src/app_logger.dart';
 import 'package:{{name}}/di/scope.dart';
 import 'package:{{name}}/features/app/application/cubits/locale_cubit.dart';
@@ -54,8 +55,11 @@ class GlobalScope extends Scope {
     getIt
 
       /// Core
+      ..registerSingleton<Env>(
+        DevEnv(),
+      )
       ..registerSingleton<ConfigurationVariables>(
-        DebugConfigurationVariables(),
+        DebugConfigurationVariables(environmentalVariables: getIt<Env>()),
       )
       ..registerSingleton<AppRouter>(
         BeamerAppRouter(),

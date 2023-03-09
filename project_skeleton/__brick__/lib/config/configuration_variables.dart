@@ -1,15 +1,21 @@
-import 'package:flutter/foundation.dart';
+import 'package:{{name}}/config/env.dart';
 
 abstract class ConfigurationVariables {
+  ConfigurationVariables({
+    required this.environmentalVariables,
+  });
+
+  final Env environmentalVariables;
+
   /// Fakes internet connection absence
-  abstract final ValueNotifier<bool> fakeInternetConnectionAbsence;
-  void setFakeInternetConnectionAbsence(bool value) {
-    fakeInternetConnectionAbsence.value = value;
-  }
+  abstract bool fakeInternetConnectionAbsence;
 }
 
 class DebugConfigurationVariables extends ConfigurationVariables {
+  DebugConfigurationVariables({
+    required super.environmentalVariables,
+  });
+
   @override
-  final ValueNotifier<bool> fakeInternetConnectionAbsence =
-      ValueNotifier<bool>(false);
+  bool fakeInternetConnectionAbsence = false;
 }
