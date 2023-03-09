@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 void run(HookContext context) async {
-  final progress = context.logger.progress('Post generation initiated');
+  final progress = context.logger.progress(
+    'Post generation initiated',
+  );
 
   context.logger.info('Fetching dependencies');
 
