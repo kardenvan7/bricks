@@ -4,10 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part '{{name}}_state.dart';
 part '{{name}}_cubit.freezed.dart';
 
-class {{name.pascalCase()}}CubitImpl extends {{name.pascalCase()}}Cubit {
-  {{name.pascalCase()}}CubitImpl();
-}
-
 abstract class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {
   {{name.pascalCase()}}Cubit() : super(const {{name.pascalCase()}}State.initial());
 }
@@ -18,14 +14,17 @@ extension {{name.pascalCase()}}StateSwitch on {{name.pascalCase()}}Cubit {
     emit(state);
   }
 
+  @protected
   void setLoadedState() {
     _emit({{name.pascalCase()}}State.loaded());
   }
 
+  @protected
   void setLoadingState() {
     _emit(const {{name.pascalCase()}}State.loading());
   }
 
+  @protected
   void setErrorState() {
     _emit({{name.pascalCase()}}State.error());
   }
