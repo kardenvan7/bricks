@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-{{#use_freezed}}import 'package:freezed_annotation/freezed_annotation.dart';{{/use_freezed}}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part '{{name}}_state.dart';
-{{#use_freezed}}part '{{name}}_cubit.freezed.dart';{{/use_freezed}}
+part '{{name}}_cubit.freezed.dart';
 
 class {{name.pascalCase()}}CubitImpl extends {{name.pascalCase()}}Cubit {
   {{name.pascalCase()}}CubitImpl();

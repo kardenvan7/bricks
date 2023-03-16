@@ -4,7 +4,7 @@ description: A new brick created with the Mason CLI.
 # The following defines the version and build number for your brick.
 # A version number is three numbers separated by dots, like 1.2.34
 # followed by an optional build number (separated by a +).
-version: 0.2.0
+version: 0.3.0
 
 # The following defines the environment for the current brick.
 # It includes the version of mason that the brick requires.
@@ -25,9 +25,3 @@ vars:
     type: string
     description: Cubit class name
     prompt: Cubit class name (without "_cubit" suffix)
-
-  use_freezed:
-    type: boolean
-    description: Determines whether to use "freezed" package for state or not
-    default: true
-    prompt: Use "freezed" package for state?

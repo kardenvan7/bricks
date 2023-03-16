@@ -4,12 +4,9 @@ import 'package:mason/mason.dart';
 
 void run(HookContext context) async {
   final progress = context.logger.progress('Post generation running');
-  final arguments = context.vars;
 
   try {
-    if (arguments['use_freezed'] == true) {
-      await _generateFreezedFiles(context);
-    }
+    await _generateFreezedFiles(context);
 
     progress.complete('Post generation finished successfully');
   } catch (e, st) {
