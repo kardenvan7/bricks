@@ -4,7 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part '{{name}}_state.dart';
 {{#use_freezed}}part '{{name}}_cubit.freezed.dart';{{/use_freezed}}
 
-class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {
+class {{name.pascalCase()}}CubitImpl extends {{name.pascalCase()}}Cubit {
+  {{name.pascalCase()}}CubitImpl();
+}
+
+abstract class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {
   {{name.pascalCase()}}Cubit() : super(const {{name.pascalCase()}}State.initial());
 }
 
@@ -14,15 +18,15 @@ extension {{name.pascalCase()}}StateSwitch on {{name.pascalCase()}}Cubit {
     emit(state);
   }
 
-  void _emitLoadedState() {
+  void setLoadedState() {
     _emit({{name.pascalCase()}}State.loaded());
   }
 
-  void _emitLoadingState() {
+  void setLoadingState() {
     _emit(const {{name.pascalCase()}}State.loading());
   }
 
-  void _emitErrorState() {
+  void setErrorState() {
     _emit({{name.pascalCase()}}State.error());
   }
 }

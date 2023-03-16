@@ -1,7 +1,7 @@
 part of '{{name}}_cubit.dart';
 
 {{#use_freezed}}@freezed{{/use_freezed}}
-class {{name.pascalCase()}}State with _${{name.pascalCase()}}State {
+class {{name.pascalCase()}}State{{#use_freezed}} with _${{name.pascalCase()}}State{{/use_freezed}} {
   const {{name.pascalCase()}}State._();
 
   const factory {{name.pascalCase()}}State.initial() = _Initial;
