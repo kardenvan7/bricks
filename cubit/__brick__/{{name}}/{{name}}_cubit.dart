@@ -15,6 +15,11 @@ extension {{name.pascalCase()}}StateSwitch on {{name.pascalCase()}}Cubit {
   }
 
   @protected
+  void setInitialState() {
+    _emit({{name.pascalCase()}}State.initial());
+  }
+
+  @protected
   void setLoadedState() {
     _emit({{name.pascalCase()}}State.loaded());
   }
