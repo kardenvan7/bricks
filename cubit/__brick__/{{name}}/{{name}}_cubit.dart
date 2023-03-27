@@ -16,7 +16,7 @@ extension {{name.pascalCase()}}StateSwitch on {{name.pascalCase()}}Cubit {
 
   @protected
   void setInitialState() {
-    _emit({{name.pascalCase()}}State.initial());
+    _emit(const {{name.pascalCase()}}State.initial());
   }
 
   @protected
