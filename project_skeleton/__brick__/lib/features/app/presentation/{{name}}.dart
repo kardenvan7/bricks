@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{name}}/di/global_scope.dart';
+import 'package:{{name}}/features/app/app_scope.dart';
 import 'package:{{name}}/features/app/application/cubits/locale_cubit.dart';
 import 'package:{{name}}/features/app/application/cubits/theme_mode_cubit.dart';
 
@@ -11,7 +11,7 @@ class {{name.pascalCase()}} extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scope = GlobalScope.instance;
+    final scope = AppScope.instance;
 
     final localization = scope.getAppLocalizationsFacade();
     final router = scope.getAppRouter();

@@ -1,26 +1,26 @@
-import 'package:{{name}}/config/configuration_variables.dart';
-import 'package:{{name}}/config/env.dart';
-import 'package:{{name}}/core/src/app_logger.dart';
-import 'package:{{name}}/di/scope.dart';
-import 'package:{{name}}/features/app/application/cubits/locale_cubit.dart';
-import 'package:{{name}}/features/app/application/cubits/theme_mode_cubit.dart';
-import 'package:{{name}}/features/app/data/providers/locale/hive_locale_local_provider.dart';
-import 'package:{{name}}/features/app/data/providers/locale/locale_local_provider.dart';
-import 'package:{{name}}/features/app/data/providers/theme/hive_theme_mode_local_provider.dart';
-import 'package:{{name}}/features/app/data/providers/theme/theme_mode_local_provider.dart';
-import 'package:{{name}}/features/app/data/repositories/locale_repository_impl.dart';
-import 'package:{{name}}/features/app/data/repositories/theme_mode_repository_impl.dart';
-import 'package:{{name}}/features/app/domain/repositories_interfaces/locale_repository.dart';
-import 'package:{{name}}/features/app/domain/repositories_interfaces/theme_mode_repository.dart';
-import 'package:{{name}}/features/app/presentation/theme/theme_facade.dart';
-import 'package:{{name}}/hive/hive_facade.dart';
-import 'package:{{name}}/localization/localization.dart';
-import 'package:{{name}}/navigation/navigation.dart';
+import 'package:skelete_test/config/configuration_variables.dart';
+import 'package:skelete_test/config/env.dart';
+import 'package:skelete_test/core/src/app_logger.dart';
+import 'package:skelete_test/di/di.dart';
+import 'package:skelete_test/features/app/application/cubits/locale_cubit.dart';
+import 'package:skelete_test/features/app/application/cubits/theme_mode_cubit.dart';
+import 'package:skelete_test/features/app/data/providers/locale/hive_locale_local_provider.dart';
+import 'package:skelete_test/features/app/data/providers/locale/locale_local_provider.dart';
+import 'package:skelete_test/features/app/data/providers/theme/hive_theme_mode_local_provider.dart';
+import 'package:skelete_test/features/app/data/providers/theme/theme_mode_local_provider.dart';
+import 'package:skelete_test/features/app/data/repositories/locale_repository_impl.dart';
+import 'package:skelete_test/features/app/data/repositories/theme_mode_repository_impl.dart';
+import 'package:skelete_test/features/app/domain/repositories_interfaces/locale_repository.dart';
+import 'package:skelete_test/features/app/domain/repositories_interfaces/theme_mode_repository.dart';
+import 'package:skelete_test/features/app/presentation/theme/theme_facade.dart';
+import 'package:skelete_test/hive/hive.dart';
+import 'package:skelete_test/localization/localization.dart';
+import 'package:skelete_test/navigation/app_router.dart';
 
-class GlobalScope extends Scope {
-  GlobalScope._();
+class AppScope extends GetItScope {
+  AppScope._();
 
-  static final GlobalScope instance = GlobalScope._();
+  static final AppScope instance = AppScope._();
 
   ThemeFacade getThemeFacade() {
     return getIt.get<ThemeFacade>();
@@ -55,11 +55,8 @@ class GlobalScope extends Scope {
     getIt
 
       /// Core
-      ..registerSingleton<Env>(
-        DevEnv(),
-      )
       ..registerSingleton<ConfigurationVariables>(
-        DebugConfigurationVariables(environmentalVariables: getIt<Env>()),
+        DebugConfigurationVariables(),
       )
       ..registerSingleton<AppRouter>(
         BeamerAppRouter(),

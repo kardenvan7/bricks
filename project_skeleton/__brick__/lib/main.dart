@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:{{name}}/di/di_initializer.dart';
-import 'package:{{name}}/di/global_scope.dart';
+import 'package:{{name}}/di/di.dart';
 import 'package:{{name}}/features/app/presentation/{{name}}.dart';
 
 void main() {

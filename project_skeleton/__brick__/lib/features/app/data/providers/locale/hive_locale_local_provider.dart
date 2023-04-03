@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:{{name}}/core/src/failures/failure.dart';
 import 'package:{{name}}/core/src/result.dart';
 import 'package:{{name}}/features/app/data/providers/locale/locale_local_provider.dart';
-import 'package:{{name}}/hive/hive_facade.dart';
-import 'package:flutter/material.dart';
+import 'package:{{name}}/hive/hive.dart';
 
 class HiveLocaleLocalProvider implements LocaleLocalProvider {
   const HiveLocaleLocalProvider({

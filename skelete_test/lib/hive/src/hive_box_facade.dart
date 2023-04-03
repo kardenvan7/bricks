@@ -7,9 +7,9 @@ abstract class HiveBoxFacade<T> {
 
   Result<LocalFetchFailure, T> read(String key);
 
-  Future<Result<UnknownLocalFetchFailure, void>> save(String key, T value);
+  Future<Result<LocalFetchFailure, void>> save(String key, T value);
 
-  Future<Result<UnknownLocalFetchFailure, void>> delete(String key);
+  Future<Result<LocalFetchFailure, void>> delete(String key);
 }
 
 class HiveBoxFacadeImpl<T> extends HiveBoxFacade<T> {
@@ -37,7 +37,7 @@ class HiveBoxFacadeImpl<T> extends HiveBoxFacade<T> {
   }
 
   @override
-  Future<Result<UnknownLocalFetchFailure, void>> save(
+  Future<Result<LocalFetchFailure, void>> save(
     String key,
     T value,
   ) async {
@@ -47,7 +47,7 @@ class HiveBoxFacadeImpl<T> extends HiveBoxFacade<T> {
       return Result.success(null);
     } on Exception catch (e, st) {
       return Result.failure(
-        UnknownLocalFetchFailure(
+        LocalFetchFailure.unknown(
           info: FailureInformation(error: e, trace: st),
         ),
       );
@@ -55,14 +55,14 @@ class HiveBoxFacadeImpl<T> extends HiveBoxFacade<T> {
   }
 
   @override
-  Future<Result<UnknownLocalFetchFailure, void>> delete(String key) async {
+  Future<Result<LocalFetchFailure, void>> delete(String key) async {
     try {
       await box.delete(key);
 
       return Result.success(null);
     } on Exception catch (e, st) {
       return Result.failure(
-        UnknownLocalFetchFailure(
+        LocalFetchFailure.unknown(
           info: FailureInformation(error: e, trace: st),
         ),
       );
@@ -93,7 +93,7 @@ class MockHiveBoxFacade<T> extends HiveBoxFacade<T> {
   }
 
   @override
-  Future<Result<UnknownLocalFetchFailure, void>> save(
+  Future<Result<LocalFetchFailure, void>> save(
     String key,
     T value,
   ) async {
@@ -103,7 +103,7 @@ class MockHiveBoxFacade<T> extends HiveBoxFacade<T> {
       return Result.success(null);
     } on Exception catch (e, st) {
       return Result.failure(
-        UnknownLocalFetchFailure(
+        LocalFetchFailure.unknown(
           info: FailureInformation(error: e, trace: st),
         ),
       );
@@ -111,14 +111,14 @@ class MockHiveBoxFacade<T> extends HiveBoxFacade<T> {
   }
 
   @override
-  Future<Result<UnknownLocalFetchFailure, void>> delete(String key) async {
+  Future<Result<LocalFetchFailure, void>> delete(String key) async {
     try {
       _box.remove(key);
 
       return Result.success(null);
     } on Exception catch (e, st) {
       return Result.failure(
-        UnknownLocalFetchFailure(
+        LocalFetchFailure.unknown(
           info: FailureInformation(error: e, trace: st),
         ),
       );

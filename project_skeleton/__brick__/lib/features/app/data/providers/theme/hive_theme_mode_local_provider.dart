@@ -1,9 +1,9 @@
+import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 import 'package:{{name}}/core/src/failures/failure.dart';
 import 'package:{{name}}/core/src/result.dart';
 import 'package:{{name}}/features/app/data/providers/theme/theme_mode_local_provider.dart';
-import 'package:{{name}}/hive/hive_facade.dart';
-import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
+import 'package:{{name}}/hive/hive.dart';
 
 class HiveThemeModeLocalProvider implements ThemeModeLocalProvider {
   const HiveThemeModeLocalProvider({

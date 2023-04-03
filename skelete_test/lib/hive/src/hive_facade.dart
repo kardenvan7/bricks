@@ -1,23 +1,15 @@
 import 'dart:async';
-import 'dart:typed_data';
 
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:{{name}}/core/core.dart';
+import 'package:skelete_test/core/core.dart';
 
 part 'hive_box_facade.dart';
 
 abstract class HiveFacade {
   Future<void> initialize();
 
-  Future<HiveBoxFacade<T>> openBox<T>(
-    HiveBoxesKeys key, {
-    HiveCipher? encryptionCipher,
-    bool crashRecovery = true,
-    String? path,
-    Uint8List? bytes,
-    String? collection,
-  });
+  Future<HiveBoxFacade<T>> openBox<T>(HiveBoxesKeys key);
 
   HiveBoxFacade<T> getBox<T>(String name);
 }
@@ -31,24 +23,8 @@ class HiveFacadeImpl implements HiveFacade {
   }
 
   @override
-  Future<HiveBoxFacade<T>> openBox<T>(
-    HiveBoxesKeys key, {
-    HiveCipher? encryptionCipher,
-    bool crashRecovery = true,
-    String? path,
-    Uint8List? bytes,
-    String? collection,
-  }) async {
-    return HiveBoxFacadeImpl(
-      await Hive.openBox<T>(
-        key.name,
-        encryptionCipher: encryptionCipher,
-        crashRecovery: crashRecovery,
-        path: path,
-        bytes: bytes,
-        collection: collection,
-      ),
-    );
+  Future<HiveBoxFacade<T>> openBox<T>(HiveBoxesKeys key) async {
+    return HiveBoxFacadeImpl(await Hive.openBox<T>(key.name));
   }
 
   @override
@@ -66,14 +42,7 @@ class MockHiveFacade implements HiveFacadeImpl {
   }
 
   @override
-  Future<HiveBoxFacade<T>> openBox<T>(
-    HiveBoxesKeys key, {
-    HiveCipher? encryptionCipher,
-    bool crashRecovery = true,
-    String? path,
-    Uint8List? bytes,
-    String? collection,
-  }) async {
+  Future<HiveBoxFacade<T>> openBox<T>(HiveBoxesKeys key) async {
     final newBox = MockHiveBoxFacade<T>();
     _openedBoxes[key.name] = newBox;
 
