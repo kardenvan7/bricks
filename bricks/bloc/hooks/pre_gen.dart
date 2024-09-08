@@ -1,11 +1,9 @@
-import 'dart:io';
-
 import 'package:hooks_utils/re_case.dart';
 import 'package:mason/mason.dart';
 
 import 'state_type.dart';
 
-Future<void> run(HookContext context) async {
+void run(HookContext context) {
   final name = context.vars['name'];
   final bool withCommands = context.vars['withCommands'];
   final stateType = StateType.fromString(context.vars['stateType']);
@@ -77,5 +75,3 @@ void _setFileNames(
     context.vars['commandFileName'] = '${baseFileName}_command';
   }
 }
-
-class IOOverridesLol extends IOOverrides {}
