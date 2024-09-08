@@ -3,3 +3,4 @@ mason-lock.json
 **/.dart_tool
 **/build
 .idea
+.mason

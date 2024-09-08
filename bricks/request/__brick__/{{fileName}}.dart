@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:oomi/src/core/interfaces/serializable.dart';
+import 'package:bricks_expl/src/core/interfaces/serializable.dart';
 
 part '{{partFileName}}.dart';
 
