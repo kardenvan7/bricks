@@ -1,0 +1,2 @@
+{{#isBlocInjectionConstructor}}{{> blocInjectionConstructor }}{{/isBlocInjectionConstructor}}
+{{#isBlocInjectionProvider}}{{> blocInjectionProvider }}{{/isBlocInjectionProvider}}

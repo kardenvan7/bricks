@@ -1,0 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part '{{statePartFileName}}.dart';
+
+@freezed
+class {{stateClassName}} with _${{stateClassName}} {
+  const factory {{stateClassName}}() = _{{stateClassName}};
+
+  factory {{stateClassName}}.initial() => {{stateClassName}}();
+}

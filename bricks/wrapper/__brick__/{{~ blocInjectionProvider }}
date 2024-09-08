@@ -1,0 +1,4 @@
+BlocProvider(
+    create: (_) => module.get<YourBloc>(),
+    child: {{> wrappee }},
+)

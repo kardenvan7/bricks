@@ -1,0 +1,12 @@
+part of '{{blocFileName}}.dart';
+
+sealed class {{stateClassName}} with EquatableMixin {
+    const {{stateClassName}}();
+
+    @override
+    List<String> get props => [];
+}
+
+final class {{stateClassName}}Initial extends {{stateClassName}} {
+    const {{stateClassName}}Initial();
+}

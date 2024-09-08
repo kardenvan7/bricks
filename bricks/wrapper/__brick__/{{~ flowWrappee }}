@@ -1,0 +1,7 @@
+AutoRouter(
+  builder: (_, child) => {{wrappeeClassName}}(
+    {{#isBlocInjectionConstructor}}bloc: bloc,{{/isBlocInjectionConstructor}}
+    router: module.get<YourRouter>(),
+    child: child,
+  ),
+)

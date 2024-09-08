@@ -1,0 +1,4 @@
+BlocDisposer(
+    create: () => module.get<YourBloc>(),
+    builder: (bloc) => {{> wrappee }},
+)

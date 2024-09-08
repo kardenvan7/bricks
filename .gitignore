@@ -1,0 +1,6 @@
+mason-lock.json
+**/pubspec.lock
+**/.dart_tool
+**/build
+.idea
+.idea_temp

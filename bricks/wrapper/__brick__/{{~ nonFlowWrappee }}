@@ -1,0 +1,4 @@
+{{wrappeeClassName}}(
+    {{#isBlocInjectionConstructor}}bloc: bloc,{{/isBlocInjectionConstructor}}
+    {{#isPageOrFlow}}router: module.get<YourRouter>(),{{/isPageOrFlow}}
+)
