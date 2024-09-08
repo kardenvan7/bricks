@@ -1,6 +1,6 @@
 {{#isStateSealed}}import 'package:equatable/equatable.dart';{{/isStateSealed}}
-{{#withCommands}}import 'package:oomi/src/core/bloc/commands_bloc.dart';{{/withCommands}}
-{{^withCommands}}import 'package:oomi/src/core/bloc/base_bloc.dart';{{/withCommands}}
+{{#withCommands}}import 'package:bricks_expl/src/core/bloc/commands_bloc.dart';{{/withCommands}}
+{{^withCommands}}import 'package:bricks_expl/src/core/bloc/base_bloc.dart';{{/withCommands}}
 {{#isStateFreezed}}
 import '{{stateFileName}}.dart';
 
